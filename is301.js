@@ -9,7 +9,7 @@ let questions = [];
 
 async function loadQuestions() {
     try {
-        const response = await fetch('/api/questions');
+        const response = await fetch('/api/questions'); // hoặc '/data/QIS301.json' nếu bạn dùng file tĩnh
         if (!response.ok) throw new Error(`Lỗi ${response.status}`);
         const data = await response.json();
 
@@ -37,11 +37,12 @@ async function loadQuestions() {
             }
         }).filter(item => item !== null);
     } catch (error) {
-        console.error(`Lỗi khi tải dữ liệu từ API:`, error);
+        console.error(`Lỗi khi tải dữ liệu:`, error);
         questionElement.innerText = "Không thể tải câu hỏi. Vui lòng thử lại.";
         return [];
     }
 }
+
 
 async function startQuiz() {
     questions = await loadQuestions();
