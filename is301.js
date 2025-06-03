@@ -44,7 +44,7 @@ async function loadQuestions() {
 }
 
 async function startQuiz() {
-    questions = await loadQuestions("data/QIS301.json");
+    questions = await loadQuestions();
     if (questions.length === 0) {
         questionElement.innerText = "Không có câu hỏi nào để hiển thị.";
         return;
